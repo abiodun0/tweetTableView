@@ -29,17 +29,15 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     private func searchForTweets(){
         if searchText != nil {
             let request = nextRequest
-            request.fetchTweets { [weak weakSelf = self] (newTweets) -> Void in
-                print(newTweets)
-                
+            request.fetchTweets { (newTweets) -> Void in
                 dispatch_async(dispatch_get_main_queue()) {
                     if newTweets.count > 0 {
                         //                        self.lastSuccessfulRequest = request
-                        weakSelf?.tweets.insert(newTweets, atIndex: 0)
-                        weakSelf?.tableView.reloadData()
-                        weakSelf?.updateDatabase(newTweets)
+                        self.tweets.insert(newTweets, atIndex: 0)
+                        self.tableView.reloadData()
+                       self.updateDatabase(newTweets)
                     }
-                     weakSelf?.refreshControl?.endRefreshing()
+                     self.refreshControl?.endRefreshing()
                 }
                 
             }
@@ -49,11 +47,11 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     private func updateDatabase(tweets: [Tweet]){
-        manageObjectContext?.performBlock() {[weak weakSelf = self] in
+        manageObjectContext?.performBlock {
             for twitterInfo in tweets {
-                _ = Tweets.createTweetIfNecessary(twitterInfo, inManagedbjectContext: (weakSelf?.manageObjectContext!)!)
+                _ = Tweets.createTweetIfNecessary(twitterInfo, inManagedbjectContext: self.manageObjectContext!)
                 do {
-                    try weakSelf?.manageObjectContext!.save()
+                    try self.manageObjectContext!.save()
                 }catch let err {
                     print("some random error\(err)")
                 }
@@ -62,7 +60,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         printeDatabaseStatistics()
     }
     private func printeDatabaseStatistics(){
-        manageObjectContext?.performBlock() {
+        manageObjectContext?.performBlock {
             if let twitterUser = try? self.manageObjectContext!.executeFetchRequest(NSFetchRequest(entityName: "TwitterUser")){
                 print("Count twitter user \(twitterUser.count)")
             }

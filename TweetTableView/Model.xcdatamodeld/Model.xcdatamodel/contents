@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
-    <entity name="Tweets" syncable="YES">
+    <entity name="Tweets" representedClassName=".Tweets" syncable="YES">
         <attribute name="posted" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tweeters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="tweets" inverseEntity="TwitterUser" syncable="YES"/>
     </entity>
-    <entity name="TwitterUser" syncable="YES">
+    <entity name="TwitterUser" representedClassName=".TwitterUser" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="screeName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tweets" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tweets" inverseName="tweeters" inverseEntity="Tweets" syncable="YES"/>
