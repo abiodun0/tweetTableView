@@ -34,7 +34,7 @@ public class TwitterRequest
     }
     
     // convenience initializer for creating a TwitterRequest that is a search for Tweets
-    public convenience init(search: String, count: Int = 0, _ resultType: SearchResultType = .Mixed, _ region: CLCircularRegion? = nil) {
+     public convenience init(search: String, count: Int = 0, _ resultType: SearchResultType = .Mixed, _ region: CLCircularRegion? = nil) {
         var parameters = [TwitterKey.Query : search]
         if count > 0 {
             parameters[TwitterKey.Count] = "\(count)"
@@ -239,7 +239,7 @@ public class TwitterRequest
     
     // keys in Twitter responses/queries
 
-    struct TwitterKey {
+    private struct TwitterKey {
         static let Count = "count"
         static let Query = "q"
         static let Tweets = "statuses"

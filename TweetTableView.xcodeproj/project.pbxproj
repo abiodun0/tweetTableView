@@ -18,6 +18,12 @@
 		5CA626CA1CD6CBE0002F7076 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA626C61CD6CBE0002F7076 /* Tweet.swift */; };
 		5CA626CB1CD6CBE0002F7076 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA626C71CD6CBE0002F7076 /* TwitterRequest.swift */; };
 		5CA626CC1CD6CBE0002F7076 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA626C81CD6CBE0002F7076 /* User.swift */; };
+		5CB1448E1CFA85470051757C /* TweeterUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB1448D1CFA85470051757C /* TweeterUserTableViewController.swift */; };
+		5CB144911CFA85DE0051757C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CB1448F1CFA85DE0051757C /* Model.xcdatamodeld */; };
+		5CB144961CFA87470051757C /* Tweets+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB144921CFA87470051757C /* Tweets+CoreDataProperties.swift */; };
+		5CB144971CFA87470051757C /* Tweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB144931CFA87470051757C /* Tweets.swift */; };
+		5CB144981CFA87470051757C /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB144941CFA87470051757C /* TwitterUser+CoreDataProperties.swift */; };
+		5CB144991CFA87470051757C /* TwitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB144951CFA87470051757C /* TwitterUser.swift */; };
 		5CCECDEA1CDBE40A00269152 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCECDE91CDBE40A00269152 /* TweetTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +62,12 @@
 		5CA626C61CD6CBE0002F7076 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		5CA626C71CD6CBE0002F7076 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		5CA626C81CD6CBE0002F7076 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5CB1448D1CFA85470051757C /* TweeterUserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweeterUserTableViewController.swift; sourceTree = "<group>"; };
+		5CB144901CFA85DE0051757C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		5CB144921CFA87470051757C /* Tweets+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweets+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5CB144931CFA87470051757C /* Tweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweets.swift; sourceTree = "<group>"; };
+		5CB144941CFA87470051757C /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5CB144951CFA87470051757C /* TwitterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterUser.swift; sourceTree = "<group>"; };
 		5CCECDE91CDBE40A00269152 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +119,10 @@
 		5CA626861CD6C4BF002F7076 /* TweetTableView */ = {
 			isa = PBXGroup;
 			children = (
+				5CB144921CFA87470051757C /* Tweets+CoreDataProperties.swift */,
+				5CB144931CFA87470051757C /* Tweets.swift */,
+				5CB144941CFA87470051757C /* TwitterUser+CoreDataProperties.swift */,
+				5CB144951CFA87470051757C /* TwitterUser.swift */,
 				5CA626C41CD6CBE0002F7076 /* Twitter */,
 				5CA626871CD6C4BF002F7076 /* AppDelegate.swift */,
 				5CA6268B1CD6C4BF002F7076 /* Main.storyboard */,
@@ -115,6 +131,8 @@
 				5CA626931CD6C4BF002F7076 /* Info.plist */,
 				5CA626B71CD6C560002F7076 /* TweetTableViewController.swift */,
 				5CCECDE91CDBE40A00269152 /* TweetTableViewCell.swift */,
+				5CB1448D1CFA85470051757C /* TweeterUserTableViewController.swift */,
+				5CB1448F1CFA85DE0051757C /* Model.xcdatamodeld */,
 			);
 			path = TweetTableView;
 			sourceTree = "<group>";
@@ -284,6 +302,12 @@
 				5CA626CC1CD6CBE0002F7076 /* User.swift in Sources */,
 				5CA626B81CD6C560002F7076 /* TweetTableViewController.swift in Sources */,
 				5CA626C91CD6CBE0002F7076 /* MediaItem.swift in Sources */,
+				5CB144911CFA85DE0051757C /* Model.xcdatamodeld in Sources */,
+				5CB144991CFA87470051757C /* TwitterUser.swift in Sources */,
+				5CB144971CFA87470051757C /* Tweets.swift in Sources */,
+				5CB1448E1CFA85470051757C /* TweeterUserTableViewController.swift in Sources */,
+				5CB144981CFA87470051757C /* TwitterUser+CoreDataProperties.swift in Sources */,
+				5CB144961CFA87470051757C /* Tweets+CoreDataProperties.swift in Sources */,
 				5CA626CA1CD6CBE0002F7076 /* Tweet.swift in Sources */,
 				5CCECDEA1CDBE40A00269152 /* TweetTableViewCell.swift in Sources */,
 			);
@@ -531,6 +555,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5CB1448F1CFA85DE0051757C /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5CB144901CFA85DE0051757C /* Model.xcdatamodel */,
+			);
+			currentVersion = 5CB144901CFA85DE0051757C /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5CA6267C1CD6C4BF002F7076 /* Project object */;
 }

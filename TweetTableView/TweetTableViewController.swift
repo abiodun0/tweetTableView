@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
+    var manageObjectContext: NSManagedObjectContext? = {
+        return (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+    }()
     var tweets = [[Tweet]]()
     var lastSuccessfulRequest: TwitterRequest?
     var nextRequest: TwitterRequest {
@@ -20,25 +24,52 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     @IBAction func refresh(sender: UIRefreshControl?) {
+        searchForTweets()
+    }
+    private func searchForTweets(){
         if searchText != nil {
             let request = nextRequest
-            request.fetchTweets { (newTweets) -> Void in
+            request.fetchTweets { [weak weakSelf = self] (newTweets) -> Void in
                 print(newTweets)
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if newTweets.count > 0 {
-//                        self.lastSuccessfulRequest = request
-                        self.tweets.insert(newTweets, atIndex: 0)
-                        self.tableView.reloadData()
-                        sender?.endRefreshing()
+                        //                        self.lastSuccessfulRequest = request
+                        weakSelf?.tweets.insert(newTweets, atIndex: 0)
+                        weakSelf?.tableView.reloadData()
+                        weakSelf?.updateDatabase(newTweets)
                     }
+                     weakSelf?.refreshControl?.endRefreshing()
                 }
                 
             }
             
         }else{
-            sender?.endRefreshing()
+            self.refreshControl?.endRefreshing()
         }
+    }
+    private func updateDatabase(tweets: [Tweet]){
+        manageObjectContext?.performBlock() {[weak weakSelf = self] in
+            for twitterInfo in tweets {
+                _ = Tweets.createTweetIfNecessary(twitterInfo, inManagedbjectContext: (weakSelf?.manageObjectContext!)!)
+                do {
+                    try weakSelf?.manageObjectContext!.save()
+                }catch let err {
+                    print("some random error\(err)")
+                }
+            }
+        }
+        printeDatabaseStatistics()
+    }
+    private func printeDatabaseStatistics(){
+        manageObjectContext?.performBlock() {
+            if let twitterUser = try? self.manageObjectContext!.executeFetchRequest(NSFetchRequest(entityName: "TwitterUser")){
+                print("Count twitter user \(twitterUser.count)")
+            }
+            let tweetCount = self.manageObjectContext!.countForFetchRequest(NSFetchRequest(entityName: "Tweets"), error: nil)
+            print("Count for tweets \(tweetCount)")
+        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +113,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var SearchTextField: UITextField!{
         didSet{
             SearchTextField.delegate = self
-             SearchTextField.text = searchText
+            SearchTextField.text = searchText
         }
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
