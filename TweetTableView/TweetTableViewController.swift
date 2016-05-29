@@ -116,6 +116,15 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             SearchTextField.text = searchText
         }
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showTwitterUsers" {
+            if let newVC = segue.destinationViewController as? TweeterUserTableViewController {
+                newVC.mention = searchText
+                newVC.managedObjectContext = manageObjectContext
+            }
+
+        }
+    }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return tweets.count

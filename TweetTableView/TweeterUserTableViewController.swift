@@ -17,7 +17,27 @@ class TweeterUserTableViewController: CoreTableViewController {
         }
     }
     private func updateUI(){
+        if let context = managedObjectContext where mention?.characters.count > 0 {
+            let request = NSFetchRequest(entityName: "TwitterUser")
+            request.predicate = NSPredicate(format: "any tweets.text contains[c] %@", mention!)
+            request.sortDescriptors = [NSSortDescriptor(key: "screeName", ascending: true)]
+            fetchedResultsController = NSFetchedResultsController(
+                fetchRequest: request,
+                managedObjectContext: context, sectionNameKeyPath: nil,
+                cacheName: nil)
+        }
         
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetsCell", forIndexPath: indexPath)
+        if let tweet = fetchedResultsController?.objectAtIndexPath(indexPath) as? TwitterUser {
+            var screenName: String?
+            tweet.managedObjectContext?.performBlockAndWait {
+                screenName = tweet.screeName
+            }
+            cell.textLabel?.text = screenName
+        }
+        return cell
     }
 
     override func viewDidLoad() {

@@ -103,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="dgp-wx-Ub2" detailTextLabel="Rf9-9M-D7x" style="IBUITableViewCellStyleSubtitle" id="nJv-Ob-dqD">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetsCell" textLabel="dgp-wx-Ub2" detailTextLabel="Rf9-9M-D7x" style="IBUITableViewCellStyleSubtitle" id="nJv-Ob-dqD">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nJv-Ob-dqD" id="6gc-4M-iNS">
