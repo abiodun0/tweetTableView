@@ -18,6 +18,7 @@ class CoreTableViewController: UITableViewController, NSFetchedResultsController
                     frc.delegate = self
                     try frc.performFetch()
                 }
+                tableView.reloadData()
                 
             } catch let err {
                 print("Some error occured \(err)")
@@ -90,8 +91,8 @@ class CoreTableViewController: UITableViewController, NSFetchedResultsController
         case .Update:
             tableView.reloadRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         case .Move:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             tableView.deleteRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         }
     }
     func controllerDidChangeContent(controller: NSFetchedResultsController) {

@@ -11,9 +11,10 @@ import CoreData
 
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
-    var manageObjectContext: NSManagedObjectContext? = {
-        return (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
-    }()
+    var manageObjectContext: NSManagedObjectContext?
+//        = {
+//        return (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+//    }()
     var tweets = [[Tweet]]()
     var lastSuccessfulRequest: TwitterRequest?
     var nextRequest: TwitterRequest {
